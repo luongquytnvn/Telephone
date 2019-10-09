@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Telephone</title>
+</head>
+<body>
+<script>
+    let Telephone = function (battery, messagedraft, receivedmessage, messagesent) {
+        this.battery = battery;
+        this.receivedmessage = receivedmessage;
+        this.messagedraft = messagedraft;
+        this.messagesent = messagesent;
+        this.status = 'On'
+        this.getbattery = function () {
+            return this.battery;
+        }
+        this.getreceivedmessage = function () {
+            return this.receivedmessage;
+        }
+        this.getmessagedraft = function () {
+            return this.messagedraft;
+        }
+        this.getmessagesent = function () {
+            return this.messagesent;
+        }
+        this.turnOn = function (status) {
+            if (status == 'Off') {
+                status = 'On';
+            }
+        }
+        this.turnOff = function (status) {
+            if (status == 'On') {
+                status = 'Off';
+            }
+        }
+        this.charge = function (battery) {
+            if (battery < 100) {
+                battery++;
+            }
+        }
+        this.setmessagedraft = function (battery,status) {
+            if (status == 'On') {
+                this.messagedraft = prompt('Tin nhắn:');
+                battery--;
+            }
+        }
+        this.setreceivedmessage = function (messagesent,battery,status) {
+            if (status == 'On') {
+                this.receivedmessage = messagesent;
+                battery--;
+            }
+        }
+        this.setmessagesent = function (messagedraft,battery,status) {
+            if (status == 'On') {
+                this.messagesent = messagedraft;
+                battery--;
+            }
+        }
+        this.seereceivedmessage = function (receivedmessage,battery,status) {
+            if (status == 'On') {
+                alert('Tin nhắn: ' + receivedmessage);
+                battery--;
+            }
+        }
+        this.seemessagesent = function (messagesent,battery,status) {
+            if (status == 'On') {
+                alert('Tin nhắn: ' + messagesent);
+                battery--;
+            }
+        }
+
+    }
+    let nokia = new Telephone(100);
+    let iphone = new Telephone(100);
+    let battery = nokia.getbattery();
+    let status = nokia.status;
+    nokia.setmessagedraft(battery,status);
+    let messagedraft = nokia.getmessagedraft();
+    nokia.setmessagesent(messagedraft,battery,status);
+    let messagesent = nokia.getmessagesent();
+    iphone.setreceivedmessage(messagesent,battery,status);
+    let receivedmessage = iphone.getreceivedmessage();
+    iphone.seereceivedmessage(receivedmessage,battery,status);
+
+</script>
+</body>
+</html>
